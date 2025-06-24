@@ -1,0 +1,53 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r XToolkit/requirements.txt
+        pip install pyinstaller
+        
+    - name: Build executable
+      run: |
+        cd XToolkit
+        pyinstaller --onefile --windowed --icon=Icon/Icon.jpg --name XToolkit main.py
+        
+    - name: Create release assets
+      run: |
+        cd XToolkit
+        copy dist\XToolkit.exe ..\XToolkit_v${{ github.ref_name }}.exe
+        
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: XToolkit-Executable
+        path: XToolkit_v${{ github.ref_name }}.exe
+        
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: XToolkit_v${{ github.ref_name }}.exe
+        body_path: XToolkit/RELEASE.md
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 

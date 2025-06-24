@@ -18,6 +18,21 @@
 - 📥 [下载最新版本](https://github.com/Tyz-Kotono/little-toy/releases/latest)
 - 📖 [查看详细说明](XToolkit/README.md)
 
+---
+
+### [TextureToolkit 贴图批量处理工具](TextureToolkit/)
+高效的贴图通道合成与序列帧图集拼接工具，适合美术和开发批量处理贴图。
+
+**主要功能：**
+- RGBA 通道合成（将一张图片的 R/G/B/A 通道合成 2x2 序列帧贴图）
+- 批量图片合并为大图集（自定义行列、填充色、顺序拖拽、缩略图调节）
+- 多种输出分辨率策略
+- 预览与保存
+- 现代化 PyQt6 界面
+
+**快速开始：**
+- 📖 [查看详细说明](TextureToolkit/README.md)
+
 ## 🚀 快速开始
 
 ### 使用预编译版本
@@ -39,6 +54,7 @@ cd little-toy
 - ✨ 支持 YouTube 和 Twitter 下载
 - ✨ 添加 GIF 转换和预览功能
 - ✨ 实现 Dock 布局界面
+- ✨ 新增 TextureToolkit 贴图批量处理工具
 
 ## 👨‍💻 作者
 

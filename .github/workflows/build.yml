@@ -36,7 +36,7 @@ jobs:
         copy dist\XToolkit.exe ..\XToolkit_v${{ github.ref_name }}.exe
         
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: XToolkit-Executable
         path: XToolkit_v${{ github.ref_name }}.exe

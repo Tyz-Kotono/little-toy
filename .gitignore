@@ -26,6 +26,14 @@ MANIFEST
 *.manifest
 *.spec
 
+# Executable files (should be released separately)
+*.exe
+*.msi
+*.dmg
+*.deb
+*.rpm
+*.AppImage
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt

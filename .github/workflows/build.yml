@@ -28,7 +28,7 @@ jobs:
     - name: Build executable
       run: |
         cd XToolkit
-        pyinstaller --onefile --windowed --icon=Icon/Icon.jpg --name XToolkit main.py
+        pyinstaller --onefile --windowed --name XToolkit main.py
         
     - name: Create release assets
       run: |
@@ -46,7 +46,7 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: XToolkit_v${{ github.ref_name }}.exe
-        body_path: XToolkit/RELEASE.md
+        body_path: XToolkit/RELEASE_SIMPLE.md
         draft: false
         prerelease: false
       env:
